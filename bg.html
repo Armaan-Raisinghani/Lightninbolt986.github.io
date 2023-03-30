@@ -1,0 +1,23 @@
+<div
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+  "
+>
+  <div
+    id="particles-js"
+    style="height: 100%; height: 100%; position: relative"
+  ></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  window.onload = function () {
+    particlesJS.load("particles-js", "particlesjs-config_bg.json", function () {
+      console.log("callback - particles.js config loaded");
+    });
+  };
+</script>
