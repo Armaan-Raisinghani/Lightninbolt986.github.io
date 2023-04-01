@@ -7,7 +7,9 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #181a1b;
+      background-color: #212325;
+      font-family: "Roboto", sans-serif;
+      height: 100%;
     }
     .background {
       position: fixed;
@@ -53,7 +55,6 @@
       top: 0;
       left: 0;
       width: 100%;
-      fill: #181a1b;
       position: sticky;
       display: flex;
     "
@@ -86,7 +87,10 @@
         "
         class="buttonnavtext"
       >
-        <p style="color: white" class="buttonnavtext">
+        <p
+          style="color: white; background-color: #1c1f20"
+          class="buttonnavtext"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -118,7 +122,10 @@
         "
         class="buttonnavtext"
       >
-        <p style="color: white" class="buttonnavtext">
+        <p
+          style="color: white; background-color: #1c1f20"
+          class="buttonnavtext"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -150,7 +157,10 @@
         "
         class="buttonnavtext"
       >
-        <p style="color: white" class="buttonnavtext">
+        <p
+          style="color: white; background-color: #1c1f20"
+          class="buttonnavtext"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -182,7 +192,10 @@
         "
         class="buttonnavtext"
       >
-        <p style="color: white" class="buttonnavtext">
+        <p
+          style="color: white; background-color: #181a1b; fill: #181a1b"
+          class="buttonnavtext"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -197,16 +210,88 @@
   <div
     style="
       color: white;
-      height: 1500px;
-      width: 10%;
-      position: relative;
       z-index: 1;
       font-family: Roboto, sans-serif;
+      margin: 17vh 24vh;
+      background-color: #181a1b;
+      position: relative;
+      border-radius: 25px;
     "
+    id="mainContainer"
   >
-    <!-- Stuff -->
-    <!-- TODO: remove 50% and set to either content or 100% -->
-    <p>HI</p>
+    <div id="topIntro" style="display: flex; height: 50vh">
+      <div
+        id="introLeft"
+        style="width: 100%; height: 100%; padding: 20px 30px; display: inline"
+      >
+        <h1
+          style="
+            padding: 10px 5px;
+            background: linear-gradient(to right, orange, red);
+            font-size: 45px;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            display: inline;
+          "
+        >
+          I'm Armaan Raisinghani<br />
+          Student, Developer
+        </h1>
+        <h6
+          style="
+            padding: 0px 5px;
+            background: linear-gradient(to right, orange, red);
+            font-size: 5px;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            display: inline-block;
+          "
+        >
+          ,Human
+        </h6>
+        <p
+          style="
+            padding: 10px 5px;
+            background: linear-gradient(
+              to right,
+              rgb(255, 255, 255),
+              rgb(194, 179, 153)
+            );
+            font-size: 20px;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+          "
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.<br />Lorem
+          ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+          ea commodo consequat. Duis aute irure dolor in reprehenderit in
+          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+          sint occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div id="introRight" style="width: auto; height: 100%; margin: auto">
+        <img
+          src="./Untitled.png"
+          style="
+            height: 100%;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+          "
+        />
+      </div>
+    </div>
   </div>
   <div
     style="
