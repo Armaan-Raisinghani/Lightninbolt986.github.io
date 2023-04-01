@@ -31,24 +31,17 @@
       transform: rotateX(180deg);
       background-color: #2f3234;
     }
-    .buttonnavdiv .buttonnavtext {
-      display: block;
-      transform: scale(1,0);
+    .buttonnavdiv + .buttonnavtext {
+      transform: scale(1, 0);
       transform-origin: top center;
       transition: transform 330ms ease-in-out;
     }
-    .buttonnavdiv:hover .buttonnavtext {
-      display: block;
-      
-      transform: scale(1,1);
-    }
-    .buttonnavdiv:hover {
-      background-color: #2f3234;
+    .buttonnavdiv:hover + .buttonnavtext {
+      transform: scale(1, 1);
     }
     .buttonnav {
       transition: transform 330ms ease-in-out;
     }
-    
   </style>
 </head>
 <body>
@@ -72,109 +65,133 @@
         </div>
       </a>
     </div>
-    <div
-      style="
-        width: 24%;
-        display: inline-flex;
-        padding: 17.5px 60px 17.5px 60px;
-        position: static;
-      "
-    >
-      <div style="width: 50%" class="buttonnavdiv">
-        <button style="width: 100%; height: 100%" z-index="1" class="buttonnav">
-          <span>1</span>
-        </button>
-        <div style="width: 250px; position: absolute;" class="buttonnavtext">
-          <p style="color: white;" class="buttonnavtext">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+    <div style="width: 24%; padding: 17.5px 60px 17.5px 60px; display: inline">
+      <div style="width: 50%; height: 100%; margin: auto" class="buttonnavdiv">
+        <div style="width: 100%; height: 100%">
+          <button
+            style="width: 100%; height: 100%"
+            z-index="1"
+            class="buttonnav"
+          >
+            <span>1</span>
+          </button>
         </div>
       </div>
-      <!-- <button style="width: 100%; height: 100%;transform: rotateX(180deg);position: absolute;" z-index="-1">4</button> -->
+      <div
+        style="
+          width: 100%;
+          position: relative;
+          margin: auto;
+          text-align: center;
+        "
+        class="buttonnavtext"
+      >
+        <p style="color: white" class="buttonnavtext">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
     </div>
-    <div
-      style="
-        width: 24%;
-        display: inline-flex;
-        padding: 17.5px 60px 17.5px 60px;
-        position: static;
-      "
-    >
-      <div style="width: 50%" class="buttonnavdiv">
-        <button style="width: 100%; height: 100%" z-index="1" class="buttonnav">
-          <span>2</span>
-        </button>
-        <div style="width: 250px; position: absolute;" class="buttonnavtext">
-          <p style="color: white;" class="buttonnavtext">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+    <div style="width: 24%; padding: 17.5px 60px 17.5px 60px; display: inline">
+      <div style="width: 50%; height: 100%; margin: auto" class="buttonnavdiv">
+        <div style="width: 100%; height: 100%">
+          <button
+            style="width: 100%; height: 100%"
+            z-index="1"
+            class="buttonnav"
+          >
+            <span>2</span>
+          </button>
         </div>
       </div>
-      <!-- <button style="width: 100%; height: 100%;transform: rotateX(180deg);position: absolute;" z-index="-1">4</button> -->
+      <div
+        style="
+          width: 100%;
+          position: relative;
+          margin: auto;
+          text-align: center;
+        "
+        class="buttonnavtext"
+      >
+        <p style="color: white" class="buttonnavtext">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
     </div>
-    <div
-      style="
-        width: 24%;
-        display: inline-flex;
-        padding: 17.5px 60px 17.5px 60px;
-        position: static;
-      "
-    >
-      <div style="width: 50%" class="buttonnavdiv">
-        <button style="width: 100%; height: 100%" z-index="1" class="buttonnav">
-          <span>3</span>
-        </button>
-        <div style="width: 250px; position: absolute;" class="buttonnavtext">
-          <p style="color: white;" class="buttonnavtext">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+    <div style="width: 24%; padding: 17.5px 60px 17.5px 60px; display: inline">
+      <div style="width: 50%; height: 100%; margin: auto" class="buttonnavdiv">
+        <div style="width: 100%; height: 100%">
+          <button
+            style="width: 100%; height: 100%"
+            z-index="1"
+            class="buttonnav"
+          >
+            <span>3</span>
+          </button>
         </div>
       </div>
-      <!-- <button style="width: 100%; height: 100%;transform: rotateX(180deg);position: absolute;" z-index="-1">4</button> -->
+      <div
+        style="
+          width: 100%;
+          position: relative;
+          margin: auto;
+          text-align: center;
+        "
+        class="buttonnavtext"
+      >
+        <p style="color: white" class="buttonnavtext">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
     </div>
-    <div
-      style="
-        width: 24%;
-        display: inline-flex;
-        padding: 17.5px 60px 17.5px 60px;
-        position: static;
-      "
-    >
-      <div style="width: 50%" class="buttonnavdiv">
-        <button style="width: 100%; height: 100%" z-index="1" class="buttonnav">
-          <span>4</span>
-        </button>
-        <div style="width: 250px; position: absolute;" class="buttonnavtext">
-          <p style="color: white;" class="buttonnavtext">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+    <div style="width: 24%; padding: 17.5px 60px 17.5px 60px; display: inline">
+      <div style="width: 50%; height: 100%; margin: auto" class="buttonnavdiv">
+        <div style="width: 100%; height: 100%">
+          <button
+            style="width: 100%; height: 100%"
+            z-index="1"
+            class="buttonnav"
+          >
+            <span>4</span>
+          </button>
         </div>
       </div>
-      <!-- <button style="width: 100%; height: 100%;transform: rotateX(180deg);position: absolute;" z-index="-1">4</button> -->
+      <div
+        style="
+          width: 100%;
+          position: relative;
+          margin: auto;
+          text-align: center;
+        "
+        class="buttonnavtext"
+      >
+        <p style="color: white" class="buttonnavtext">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
     </div>
   </div>
   <div
