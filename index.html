@@ -2,6 +2,7 @@
 <html lang="en"></html>
 <head>
   <title>Armaan Raisinghani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     html,
     body {
@@ -57,9 +58,21 @@
     #topIntro {
       animation: x 0.75s ease-in cubic-bezier(0.39, 0.575, 0.565, 1);
     }
+    @media only screen and (max-width: 1050px) {
+      #Wrap {
+        flex-wrap: wrap !important;
+      }
+      #introFlexRight {
+        margin: auto !important;
+      }
+    }
   </style>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
-<body style="height: 1500px">
+<body style="height: 3500px">
   <div
     style="
       background-color: #181a1b;
@@ -81,9 +94,9 @@
     </div>
     <div style="width: 24%; display: inline">
       <div style="width: 50%; height: 100%; margin: auto" class="buttonnavdiv">
-        <div style="width: 100%; height: 100%">
+        <div style="width: 100%; height: 100%; display: flex">
           <button
-            style="width: 50%; height: 50%;margin: 12.5% 12.5%;"
+            style="width: 100%; height: 50%; margin: auto"
             class="buttonnav"
           >
             <span>1</span>
@@ -115,12 +128,12 @@
     </div>
     <div style="width: 24%; display: inline">
       <div style="width: 50%; height: 100%; margin: auto" class="buttonnavdiv">
-        <div style="width: 100%; height: 100%">
+        <div style="width: 100%; height: 100%; display: flex">
           <button
-            style="width: 50%; height: 50%;margin: 12.5% 12.5%;"
+            style="width: 100%; height: 50%; margin: auto"
             class="buttonnav"
           >
-            <span>2</span>
+            <span>1</span>
           </button>
         </div>
       </div>
@@ -149,12 +162,12 @@
     </div>
     <div style="width: 24%; display: inline">
       <div style="width: 50%; height: 100%; margin: auto" class="buttonnavdiv">
-        <div style="width: 100%; height: 100%">
+        <div style="width: 100%; height: 100%; display: flex">
           <button
-            style="width: 50%; height: 50%;margin: 12.5% 12.5%;"
+            style="width: 100%; height: 50%; margin: auto"
             class="buttonnav"
           >
-            <span>3</span>
+            <span>1</span>
           </button>
         </div>
       </div>
@@ -183,12 +196,12 @@
     </div>
     <div style="width: 24%; display: inline">
       <div style="width: 50%; height: 100%; margin: auto" class="buttonnavdiv">
-        <div style="width: 100%; height: 100%">
+        <div style="width: 100%; height: 100%; display: flex">
           <button
-            style="width: 50%; height: 50%;margin: 12.5% 12.5%;"
+            style="width: 100%; height: 50%; margin: auto"
             class="buttonnav"
           >
-            <span>4</span>
+            <span>1</span>
           </button>
         </div>
       </div>
@@ -225,116 +238,121 @@
       border-radius: 25px;
       width: auto;
       height: 100%;
-      justify-content: center;
+      justify-content: flex-start;
+      display: flex;
+      flex-direction: column;
     "
     id="mainContainer"
   >
     <div
-      style="height: calc(100vh - 75px); width: 100%; justify-content: center"
+      style="
+        height: calc(100vh - 75px);
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      "
+      id="First"
     >
       <div
         style="
-          width: 70%;
-          height: auto;
-          margin: 0 auto;
+          width: 50vw;
+          height: fit-content;
+          margin: auto auto;
           position: relative;
-          top: 50%;
-          -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+          justify-content: center;
+          align-items: center;
         "
+        class="animate__backInLeft animate__animated in1s"
       >
         <div
           id="topIntro"
           style="
-            display: flex;
-            height: fit-content;
+            max-width: 100%;
             background-color: #181a1b;
-            width: 100%;
             margin: auto auto;
             border-radius: 25px;
+            height: auto;
           "
         >
-          <div
-            id="introLeft"
-            style="
-              height: 100%;
-              margin: 20px 30px;
-              display: inline;
-              width: auto;
-            "
-          >
-            <h1
+          <div style="display: flex; flex-wrap: nowrap" id="Wrap">
+            <div
+              id="introFlexLeft"
               style="
-                padding: 10px 5px;
-                background: linear-gradient(to right, orange, red);
-                font-size: 5vh;
-                -webkit-text-fill-color: transparent;
-                -webkit-background-clip: text;
-                background-clip: text;
-                display: inline;
-              "
-            >
-              I'm Armaan Raisinghani<br />
-              Student, Developer
-            </h1>
-            <h6
-              style="
-                padding: 0px 5px;
-                background: linear-gradient(to right, orange, red);
-                font-size: 5px;
-                -webkit-text-fill-color: transparent;
-                -webkit-background-clip: text;
-                background-clip: text;
+                margin: 20px 30px;
+                height: auto;
+                width: fit-content;
                 display: inline-block;
               "
             >
-              ,Human
-            </h6>
-            <p
-              style="
-                padding: 10px 5px;
-                background: linear-gradient(
-                  to right,
-                  rgb(255, 255, 255),
-                  rgb(194, 179, 153)
-                );
-                font-size: 1.2vw;
-                -webkit-text-fill-color: transparent;
-                -webkit-background-clip: text;
-                background-clip: text;
-              "
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.<br />Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-          <div id="introRight" style="width: fit-content;">
-            <img
-              src="./Untitled.png"
-              style="
-                height: 100%;
-                border-top-right-radius: 25px;
-                border-bottom-right-radius: 25px;
-                width: fit-content;
-                
-              "
-            />
+              <img
+                src="./Untitled.png"
+                style="
+                  height: 30vh;
+                  margin: 0 0 0 auto;
+
+                  border-top-right-radius: 25px;
+                  border-bottom-right-radius: 25px;
+                  float: right;
+                  top: 0;
+                "
+                id="introFlexRight"
+              />
+              <div style="display: inline">
+                <h1
+                  style="
+                    padding: 10px 5px;
+                    background: linear-gradient(135deg, orange, red 70%);
+                    font-size: 275%;
+                    -webkit-text-fill-color: transparent;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    margin: 0;
+                  "
+                >
+                  I'm Armaan Raisinghani<br />
+                  Student and Developer
+                </h1>
+              </div>
+
+              <p
+                style="
+                  background: linear-gradient(
+                    to right,
+                    rgb(255, 255, 255),
+                    rgb(194, 179, 153)
+                  );
+                  font-size: 1.2vw;
+                  -webkit-text-fill-color: transparent;
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  margin: 0;
+                "
+              >
+                <br />
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est
+                laborum.<br />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                aute irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <hr style="width: 100%; text-align: left; margin-left: 0" />
   </div>
   <!-- Canvas for bg -->
   <div
