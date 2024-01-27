@@ -1,15 +1,125 @@
-<div id="the_main_guy">
-
-</div>
-<script src="moment.js"></script>
+<!-- Attempted clock -->
+<canvas id="clock1"></canvas>
+<script src=" moment.js"></script>
 <script src="moment-timezone-with-data.js"></script>
 <script>
-    the_main_guy = document.getElementById('the_main_guy')
+    e = [
+        ["India", "in", "Asia/Kolkata"],
+        ["Los Angeles", "la", "America/Los_Angeles"],
+        ["New York", "ny", "America/New_York"],
+        ["Australia", "au", "Australia/Sydney"]
+    ]
+    function drawOnCanvas(canvas, dayseconds) {
+
+
+        canvas.width = 200
+        canvas.height = 200
+        radius = canvas.width * 0.4
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#FF0000";
+
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.beginPath();
+        ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+        ctx.lineWidth = 1
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        for (let i = 0; i < 12; i++) {
+            ctx.lineWidth = 3
+            ctx.moveTo(0, 0)
+            ctx.moveTo(0, -radius * 0.925)
+            ctx.lineTo(0, -radius)
+            ctx.rotate(2 * Math.PI / 12)
+        }
+        ctx.stroke()
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.lineWidth = 1
+        ctx.translate(0, radius * 0.025)
+        for (let i = 0; i < 12; i++) {
+            t = i ? i : 12
+            ctx.font = `${radius / 10}px Arial`
+            ctx.fillStyle = 'black'
+            ctx.rotate(i * 2 * Math.PI / 12)
+            ctx.translate(0, -radius * 0.85)
+            ctx.rotate(-i * 2 * Math.PI / 12)
+            ctx.fillText(t, (-radius * 0.025) * t.toString().length, 0)
+            ctx.rotate(i * 2 * Math.PI / 12)
+            ctx.translate(0, radius * 0.85)
+            ctx.rotate(-i * 2 * Math.PI / 12)
+
+        }
+        ctx.translate(0, -radius * 0.025)
+        ctx.closePath();
+
+        for (let i = 0; i < 60; i++) {
+            ctx.lineWidth = 1
+            ctx.moveTo(0, 0)
+            ctx.moveTo(0, -radius * 0.975)
+            ctx.lineTo(0, -radius)
+            ctx.rotate(2 * Math.PI / 60)
+        }
+        ctx.stroke()
+        ctx.closePath()
+
+
+        a1 = (dayseconds % (12 * 60 * 60)) * Math.PI * 2 / (12 * 60 * 60)
+        a2 = (dayseconds % (60 * 60)) * Math.PI * 2 / (60 * 60)
+        a3 = (dayseconds % 60) * Math.PI * 2 / 60
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(0, 0)
+        ctx.rotate(a1)
+        ctx.lineWidth = 5
+        ctx.lineTo(0, -radius / 2)
+        ctx.stroke()
+        ctx.rotate(-a1)
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0)
+        ctx.rotate(a2)
+        ctx.lineWidth = 2.5
+        ctx.lineTo(0, -radius * 0.7)
+        ctx.stroke()
+        ctx.rotate(-a2)
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0)
+        ctx.rotate(a3)
+        ctx.lineWidth = 1
+        ctx.lineTo(0, -radius * 0.9)
+        ctx.stroke()
+        ctx.rotate(-a3)
+        ctx.closePath();
+
+    }
+    function makeField(name, zone) {
+        const div = document.createElement("div");
+        div.id = name + 'Main'
+        const para = document.createElement('p')
+        para.id = name + 'Text'
+        div.appendChild(para);
+        const canvas = document.createElement("canvas")
+        canvas.id = name + 'Canvas'
+        div.appendChild(canvas);
+        document.body.appendChild(div);
+    }
+    e.forEach(i => {
+        makeField(i[1], i[2])
+    });
     setInterval(() => {
-        ind = moment().tz("Asia/India").format('LTS');
-        la= moment().tz("America/Los_Angeles").format('LTS');
-        ny= moment().tz("America/New_York").format('LTS');
-        au = moment().tz("Australia/Sydney").format('LTS');
-        the_main_guy.innerHTML =`India: ${ind}<br />LA: ${la}<br />NY: ${ny}<br />Australia: ${au}<br />Cooler tiem displays coming soon`
-    }, 1000)()
+        e.forEach(i => {
+            time = moment().tz(i[2])
+            seconds = time.hours() * 3600 + time.minutes() * 60 + time.seconds()
+            para = document.getElementById(i[1] + "Text")
+            para.innerHTML = `${i[0]}: ${time.format('TLS')}<br />`
+            canvas = document.getElementById(i[1] + "Canvas")
+            drawOnCanvas(canvas, seconds)
+        });
+    }, 1000)
 </script>
