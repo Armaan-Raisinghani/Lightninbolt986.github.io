@@ -117,7 +117,7 @@
             time = moment().tz(i[2])
             seconds = time.hours() * 3600 + time.minutes() * 60 + time.seconds()
             para = document.getElementById(i[1] + "Text")
-            para.innerHTML = `${i[0]}: ${time.format('TLS')}<br />`
+            para.innerHTML = `${i[0]}: ${time.format('LTS')}<br />`
             canvas = document.getElementById(i[1] + "Canvas")
             drawOnCanvas(canvas, seconds)
         });
