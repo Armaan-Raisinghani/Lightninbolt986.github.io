@@ -244,6 +244,8 @@
 
     }
     function drawOnClock3_2(canvas, dayseconds) {
+        document.getElementById(canvas.id).style.animation = "";
+        document.getElementById(canvas.id).style.animationFillMode = "";
         canvas.width = 75
         canvas.height = 200
         ctx = canvas.getContext('2d')
