@@ -3,6 +3,17 @@
 <canvas id="clock1"></canvas>
 <script src=" moment.js"></script>
 <script src="moment-timezone-with-data.js"></script>
+<style>
+    @keyframes spin1 {
+        100% {
+            transform: rotateX(180deg);
+        }
+    }
+
+    @keyframes idle {
+        100% {}
+    }
+</style>
 <script>
     e = [
         ["India", "in", "Asia/Kolkata"],
@@ -12,7 +23,6 @@
         ["Toronto", "to", "America/Toronto"]
     ]
     function drawOnClock1(canvas, dayseconds) {
-
 
         canvas.width = 200
         canvas.height = 200
@@ -154,13 +164,19 @@
         })
 
     }
-    function drawOnClock3(canvas, dayseconds) {
-        canvas.width = 250
+    function drawOnClock3_1(canvas, dayseconds) {
+        document.getElementById(canvas.id).style.animation = "";
+        document.getElementById(canvas.id).style.animationFillMode = "";
+        canvas.width = 75
         canvas.height = 200
         ctx = canvas.getContext('2d')
         hourseconds = dayseconds % 3600
         minseconds = dayseconds % 60
-
+        if (dayseconds == 3600 * 24 - 1) {
+            document.getElementById(canvas.id).style.animation = "spin1 1s";
+            document.getElementById(canvas.id).style.animationFillMode = "forwards";
+        }
+        ctx.translate(-12.5, 0)
         ctx.beginPath()
         ctx.moveTo(25, 25)
         ctx.lineTo(25, 85)
@@ -177,7 +193,7 @@
         ctx.closePath()
 
         ctx.font = `bold 15px Arial`
-        ctx.fillText('H', 45, 200)
+        /*        ctx.fillText('H', 45, 200) */
         y = 75 * dayseconds / (3600 * 24) + 25
         if (y > 85) {
             ltx = (y - 85) * (5) / (3) + 25
@@ -225,8 +241,19 @@
         ctx.lineTo(50, 175)
         ctx.stroke()
         ctx.closePath()
-        ctx.translate(70, 0)
 
+    }
+    function drawOnClock3_2(canvas, dayseconds) {
+        canvas.width = 75
+        canvas.height = 200
+        ctx = canvas.getContext('2d')
+        hourseconds = dayseconds % 3600
+        minseconds = dayseconds % 60
+        if (hourseconds == 3599) {
+            document.getElementById(canvas.id).style.animation = "spin1 1s";
+            document.getElementById(canvas.id).style.animationFillMode = "forwards";
+        }
+        ctx.translate(-12.5, 0)
         ctx.beginPath()
         ctx.moveTo(25, 25)
         ctx.lineTo(25, 85)
@@ -242,7 +269,7 @@
         ctx.stroke()
         ctx.closePath()
         ctx.font = `bold 15px Arial`
-        ctx.fillText('M', 45, 200)
+        /*       ctx.fillText('M', 45, 200) */
         //create lines equations
         y = 75 * hourseconds / 3600 + 25
         if (y > 85) {
@@ -254,7 +281,8 @@
             ctx.lineTo(rtx, y)
             ctx.lineTo(50, 100)
             ctx.fill()
-        } else {
+        }
+        else {
             ctx.beginPath()
             ctx.moveTo(50, 100)
             ctx.lineTo(25, 85)
@@ -291,7 +319,21 @@
         ctx.lineTo(50, 175)
         ctx.stroke()
         ctx.closePath()
-        ctx.translate(70, 0)
+    }
+    function drawOnClock3_3(canvas, dayseconds) {
+
+        document.getElementById(canvas.id).style.animation = "";
+        document.getElementById(canvas.id).style.animationFillMode = "";
+        canvas.width = 75
+        canvas.height = 200
+        ctx = canvas.getContext('2d')
+        hourseconds = dayseconds % 3600
+        minseconds = dayseconds % 60
+        ctx.translate(-12.5, 0)
+        if (minseconds == 59) {
+            document.getElementById(canvas.id).style.animation = "spin1 1s";
+            document.getElementById(canvas.id).style.animationFillMode = "forwards";
+        }
         ctx.beginPath()
         ctx.moveTo(25, 25)
         ctx.lineTo(25, 85)
@@ -307,7 +349,7 @@
         ctx.stroke()
         ctx.closePath()
         ctx.font = `bold 15px Arial`
-        ctx.fillText('S', 45, 200)
+        /*  ctx.fillText('S', 45, 200) */
         //create lines equations
         y = 75 * minseconds / 60 + 25
         if (y > 85) {
@@ -373,8 +415,18 @@
         const clock2 = document.createElement("canvas")
         clock2.id = name + 'clock2'
         clocksdiv.appendChild(clock2)
-        const clock3 = document.createElement("canvas")
+        const clock3 = document.createElement("div")
         clock3.id = name + 'clock3'
+        clocksdiv.appendChild(clock3)
+        const clock3_1 = document.createElement("canvas")
+        clock3_1.id = name + 'clock3_1'
+        clock3.appendChild(clock3_1)
+        const clock3_2 = document.createElement("canvas")
+        clock3_2.id = name + 'clock3_2'
+        clock3.appendChild(clock3_2)
+        const clock3_3 = document.createElement("canvas")
+        clock3_3.id = name + 'clock3_3'
+        clock3.appendChild(clock3_3)
         clocksdiv.appendChild(clock3)
         div.appendChild(clocksdiv);
         document.getElementById("main").appendChild(div)
@@ -392,8 +444,12 @@
             drawOnClock1(clock1, seconds)
             clock2 = document.getElementById(i[1] + "clock2")
             drawOnClock2(clock2, time)
-            clock3 = document.getElementById(i[1] + "clock3")
-            drawOnClock3(clock3, seconds)
+            clock3_1 = document.getElementById(i[1] + "clock3_1")
+            drawOnClock3_1(clock3_1, seconds)
+            clock3_2 = document.getElementById(i[1] + "clock3_2")
+            drawOnClock3_2(clock3_2, seconds)
+            clock3_3 = document.getElementById(i[1] + "clock3_3")
+            drawOnClock3_3(clock3_3, seconds)
         });
 
     }, 1000)
