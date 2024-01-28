@@ -1,22 +1,23 @@
 <!-- Attempted clock -->
+<div id="main"></div>
 <canvas id="clock1"></canvas>
 <script src=" moment.js"></script>
 <script src="moment-timezone-with-data.js"></script>
 <script>
     e = [
         ["India", "in", "Asia/Kolkata"],
-        ["Los Angeles", "la", "America/Los_Angeles"],
         ["New York", "ny", "America/New_York"],
-        ["Australia", "au", "Australia/Sydney"]
+        ["Australia", "au", "Australia/Sydney"],
+        ["Greenwich", "utc", "UTC"],
+        ["Toronto", "to", "America/Toronto"]
     ]
-    function drawOnCanvas(canvas, dayseconds) {
+    function drawOnClock1(canvas, dayseconds) {
 
 
         canvas.width = 200
         canvas.height = 200
         radius = canvas.width * 0.4
         const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#FF0000";
 
         ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.beginPath();
@@ -98,19 +99,71 @@
         ctx.closePath();
 
     }
-    function makeField(name, zone) {
+    function drawOnClock2(canvas, time) {
+        canvas.width = 200
+        canvas.height = 200
+        hours = time.hours().toString(2).toString()
+        hours = "0".repeat(5-hours.length)+hours
+        hours = hours.split('').reverse()
+
+        minutes = time.minutes().toString(2).toString()
+        minutes = "0".repeat(6-minutes.length)+minutes
+        minutes = minutes.split('').reverse()
+
+        seconds = time.seconds().toString(2).toString()
+        seconds = "0".repeat(6-seconds.length)+seconds
+        seconds = seconds.split('').reverse()
+        const ctx = canvas.getContext("2d");
+        //hours
+        hours.forEach((i, n) => {
+            ctx.beginPath()
+            ctx.arc(50,175-(25*n),10,0,2*Math.PI)
+            ctx.stroke()
+            if (Number(i)){
+                ctx.fill()
+            }
+            else ctx.closePath()
+        })
+        minutes.forEach((i, n) => {
+            ctx.beginPath()
+            ctx.arc(100,175-(25*n),10,0,2*Math.PI)
+            ctx.stroke()
+            if (Number(i)){
+                ctx.fill()
+            }
+            else ctx.closePath()
+        })
+        seconds.forEach((i, n) => {
+            ctx.beginPath()
+            ctx.arc(150,175-(25*n),10,0,2*Math.PI)
+            ctx.stroke()
+            if (Number(i)){
+                ctx.fill()
+            }
+            else ctx.closePath()
+        })
+        
+    }
+    function makeFields(name, zone) {
         const div = document.createElement("div");
         div.id = name + 'Main'
         const para = document.createElement('p')
         para.id = name + 'Text'
         div.appendChild(para);
-        const canvas = document.createElement("canvas")
-        canvas.id = name + 'Canvas'
-        div.appendChild(canvas);
-        document.body.appendChild(div);
+        clocksdiv = document.createElement("div")
+        clocksdiv.id = name + 'clocks'
+        clocksdiv.style.display = "flex"
+        const clock1 = document.createElement("canvas")
+        clock1.id = name + 'clock1'
+        clocksdiv.appendChild(clock1)
+        const clock2 = document.createElement("canvas")
+        clock2.id = name + 'clock2'
+        clocksdiv.appendChild(clock2)
+        div.appendChild(clocksdiv);
+        document.getElementById("main").appendChild(div)
     }
     e.forEach(i => {
-        makeField(i[1], i[2])
+        makeFields(i[1], i[2])
     });
     setInterval(() => {
         e.forEach(i => {
@@ -118,8 +171,10 @@
             seconds = time.hours() * 3600 + time.minutes() * 60 + time.seconds()
             para = document.getElementById(i[1] + "Text")
             para.innerHTML = `${i[0]}: ${time.format('LTS')}<br />`
-            canvas = document.getElementById(i[1] + "Canvas")
-            drawOnCanvas(canvas, seconds)
+            clock1 = document.getElementById(i[1] + "clock1")
+            drawOnClock1(clock1, seconds)
+            clock2 = document.getElementById(i[1] + "clock2")
+            drawOnClock2(clock2, time)
         });
     }, 1000)
 </script>
