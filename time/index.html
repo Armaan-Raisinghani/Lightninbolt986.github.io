@@ -103,46 +103,260 @@
         canvas.width = 200
         canvas.height = 200
         hours = time.hours().toString(2).toString()
-        hours = "0".repeat(5-hours.length)+hours
+        hours = "0".repeat(5 - hours.length) + hours
         hours = hours.split('').reverse()
 
         minutes = time.minutes().toString(2).toString()
-        minutes = "0".repeat(6-minutes.length)+minutes
+        minutes = "0".repeat(6 - minutes.length) + minutes
         minutes = minutes.split('').reverse()
 
         seconds = time.seconds().toString(2).toString()
-        seconds = "0".repeat(6-seconds.length)+seconds
+        seconds = "0".repeat(6 - seconds.length) + seconds
         seconds = seconds.split('').reverse()
         const ctx = canvas.getContext("2d");
         //hours
+        ctx.lineWidth = 1
         hours.forEach((i, n) => {
             ctx.beginPath()
-            ctx.arc(50,175-(25*n),10,0,2*Math.PI)
+            ctx.arc(50, 175 - (25 * n), 10, 0, 2 * Math.PI)
             ctx.stroke()
-            if (Number(i)){
+            if (Number(i)) {
                 ctx.fill()
             }
             else ctx.closePath()
+
+            ctx.font = `15px Arial`
+            ctx.fillText('H', 45, 200)
         })
         minutes.forEach((i, n) => {
             ctx.beginPath()
-            ctx.arc(100,175-(25*n),10,0,2*Math.PI)
+            ctx.arc(100, 175 - (25 * n), 10, 0, 2 * Math.PI)
             ctx.stroke()
-            if (Number(i)){
+            if (Number(i)) {
                 ctx.fill()
             }
             else ctx.closePath()
+
+            ctx.font = `15px Arial`
+            ctx.fillText('M', 95, 200)
         })
         seconds.forEach((i, n) => {
             ctx.beginPath()
-            ctx.arc(150,175-(25*n),10,0,2*Math.PI)
+            ctx.arc(150, 175 - (25 * n), 10, 0, 2 * Math.PI)
             ctx.stroke()
-            if (Number(i)){
+            if (Number(i)) {
                 ctx.fill()
             }
             else ctx.closePath()
+
+            ctx.font = `15px Arial`
+            ctx.fillText('S', 145, 200)
         })
-        
+
+    }
+    function drawOnClock3(canvas, dayseconds) {
+        canvas.width = 250
+        canvas.height = 200
+        ctx = canvas.getContext('2d')
+        hourseconds = dayseconds % 3600
+        minseconds = dayseconds % 60
+
+        ctx.beginPath()
+        ctx.moveTo(25, 25)
+        ctx.lineTo(25, 85)
+        ctx.lineTo(49, 100)
+        ctx.lineTo(25, 115)
+        ctx.lineTo(25, 175)
+        ctx.lineTo(75, 175)
+        ctx.lineTo(75, 115)
+        ctx.lineTo(51, 100)
+        ctx.lineTo(75, 85)
+        ctx.lineTo(75, 25)
+        ctx.lineTo(25, 25)
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.font = `bold 15px Arial`
+        ctx.fillText('H', 45, 200)
+        y = 75 * dayseconds / (3600 * 24) + 25
+        if (y > 85) {
+            ltx = (y - 85) * (5) / (3) + 25
+            rtx = -(y - 85) * (5) / (3) + 75
+            ctx.beginPath()
+            ctx.moveTo(50, 100)
+            ctx.lineTo(ltx, y)
+            ctx.lineTo(rtx, y)
+            ctx.lineTo(50, 100)
+            ctx.fill()
+        } else {
+            ctx.beginPath()
+            ctx.moveTo(50, 100)
+            ctx.lineTo(25, 85)
+            ctx.lineTo(25, y)
+            ctx.lineTo(75, y)
+            ctx.lineTo(75, 85)
+            ctx.lineTo(50, 100)
+            ctx.fill()
+        }
+        y = 200 - (75 * dayseconds / (3600 * 24) + 25)
+        if (y < 115) {
+            lbx = ((y - 115) * (-5) / (3) + 25)
+            rbx = ((y - 115) * (5) / (3) + 75)
+            ctx.beginPath()
+            ctx.moveTo(25, 175)
+            ctx.lineTo(25, 115)
+            ctx.lineTo(lbx, y)
+            ctx.lineTo(rbx, y)
+            ctx.lineTo(75, 115)
+            ctx.lineTo(75, 175)
+            ctx.lineTo(25, 175)
+            ctx.fill()
+        } else {
+            ctx.beginPath()
+            ctx.moveTo(25, 175)
+            ctx.lineTo(25, y)
+            ctx.lineTo(75, y)
+            ctx.lineTo(75, 175)
+            ctx.lineTo(25, 175)
+            ctx.fill()
+        }
+        ctx.beginPath()
+        ctx.moveTo(50, 100)
+        ctx.lineTo(50, 175)
+        ctx.stroke()
+        ctx.closePath()
+        ctx.translate(70, 0)
+
+        ctx.beginPath()
+        ctx.moveTo(25, 25)
+        ctx.lineTo(25, 85)
+        ctx.lineTo(49, 100)
+        ctx.lineTo(25, 115)
+        ctx.lineTo(25, 175)
+        ctx.lineTo(75, 175)
+        ctx.lineTo(75, 115)
+        ctx.lineTo(51, 100)
+        ctx.lineTo(75, 85)
+        ctx.lineTo(75, 25)
+        ctx.lineTo(25, 25)
+        ctx.stroke()
+        ctx.closePath()
+        ctx.font = `bold 15px Arial`
+        ctx.fillText('M', 45, 200)
+        //create lines equations
+        y = 75 * hourseconds / 3600 + 25
+        if (y > 85) {
+            ltx = (y - 85) * (5) / (3) + 25
+            rtx = -(y - 85) * (5) / (3) + 75
+            ctx.beginPath()
+            ctx.moveTo(50, 100)
+            ctx.lineTo(ltx, y)
+            ctx.lineTo(rtx, y)
+            ctx.lineTo(50, 100)
+            ctx.fill()
+        } else {
+            ctx.beginPath()
+            ctx.moveTo(50, 100)
+            ctx.lineTo(25, 85)
+            ctx.lineTo(25, y)
+            ctx.lineTo(75, y)
+            ctx.lineTo(75, 85)
+            ctx.lineTo(50, 100)
+            ctx.fill()
+        }
+        y = 200 - (75 * hourseconds / 3600 + 25)
+        if (y < 115) {
+            lbx = ((y - 115) * (-5) / (3) + 25)
+            rbx = ((y - 115) * (5) / (3) + 75)
+            ctx.beginPath()
+            ctx.moveTo(25, 175)
+            ctx.lineTo(25, 115)
+            ctx.lineTo(lbx, y)
+            ctx.lineTo(rbx, y)
+            ctx.lineTo(75, 115)
+            ctx.lineTo(75, 175)
+            ctx.lineTo(25, 175)
+            ctx.fill()
+        } else {
+            ctx.beginPath()
+            ctx.moveTo(25, 175)
+            ctx.lineTo(25, y)
+            ctx.lineTo(75, y)
+            ctx.lineTo(75, 175)
+            ctx.lineTo(25, 175)
+            ctx.fill()
+        }
+        ctx.beginPath()
+        ctx.moveTo(50, 100)
+        ctx.lineTo(50, 175)
+        ctx.stroke()
+        ctx.closePath()
+        ctx.translate(70, 0)
+        ctx.beginPath()
+        ctx.moveTo(25, 25)
+        ctx.lineTo(25, 85)
+        ctx.lineTo(49, 100)
+        ctx.lineTo(25, 115)
+        ctx.lineTo(25, 175)
+        ctx.lineTo(75, 175)
+        ctx.lineTo(75, 115)
+        ctx.lineTo(51, 100)
+        ctx.lineTo(75, 85)
+        ctx.lineTo(75, 25)
+        ctx.lineTo(25, 25)
+        ctx.stroke()
+        ctx.closePath()
+        ctx.font = `bold 15px Arial`
+        ctx.fillText('S', 45, 200)
+        //create lines equations
+        y = 75 * minseconds / 60 + 25
+        if (y > 85) {
+            ltx = (y - 85) * (5) / (3) + 25
+            rtx = -(y - 85) * (5) / (3) + 75
+            ctx.beginPath()
+            ctx.moveTo(50, 100)
+            ctx.lineTo(ltx, y)
+            ctx.lineTo(rtx, y)
+            ctx.lineTo(50, 100)
+            ctx.fill()
+        }
+        else {
+            ctx.beginPath()
+            ctx.moveTo(50, 100)
+            ctx.lineTo(25, 85)
+            ctx.lineTo(25, y)
+            ctx.lineTo(75, y)
+            ctx.lineTo(75, 85)
+            ctx.lineTo(50, 100)
+            ctx.fill()
+        }
+        y = 200 - (75 * minseconds / (60) + 25)
+        if (y < 115) {
+            lbx = ((y - 115) * (-5) / (3) + 25)
+            rbx = ((y - 115) * (5) / (3) + 75)
+            ctx.beginPath()
+            ctx.moveTo(25, 175)
+            ctx.lineTo(25, 115)
+            ctx.lineTo(lbx, y)
+            ctx.lineTo(rbx, y)
+            ctx.lineTo(75, 115)
+            ctx.lineTo(75, 175)
+            ctx.lineTo(25, 175)
+            ctx.fill()
+        } else {
+            ctx.beginPath()
+            ctx.moveTo(25, 175)
+            ctx.lineTo(25, y)
+            ctx.lineTo(75, y)
+            ctx.lineTo(75, 175)
+            ctx.lineTo(25, 175)
+            ctx.fill()
+        }
+        ctx.beginPath()
+        ctx.moveTo(50, 100)
+        ctx.lineTo(50, 175)
+        ctx.stroke()
+        ctx.closePath()
     }
     function makeFields(name, zone) {
         const div = document.createElement("div");
@@ -159,6 +373,9 @@
         const clock2 = document.createElement("canvas")
         clock2.id = name + 'clock2'
         clocksdiv.appendChild(clock2)
+        const clock3 = document.createElement("canvas")
+        clock3.id = name + 'clock3'
+        clocksdiv.appendChild(clock3)
         div.appendChild(clocksdiv);
         document.getElementById("main").appendChild(div)
     }
@@ -168,13 +385,16 @@
     setInterval(() => {
         e.forEach(i => {
             time = moment().tz(i[2])
-            seconds = time.hours() * 3600 + time.minutes() * 60 + time.seconds()
+            const seconds = time.hours() * 3600 + time.minutes() * 60 + time.seconds()
             para = document.getElementById(i[1] + "Text")
             para.innerHTML = `${i[0]}: ${time.format('LTS')}<br />`
             clock1 = document.getElementById(i[1] + "clock1")
             drawOnClock1(clock1, seconds)
             clock2 = document.getElementById(i[1] + "clock2")
             drawOnClock2(clock2, time)
+            clock3 = document.getElementById(i[1] + "clock3")
+            drawOnClock3(clock3, seconds)
         });
+
     }, 1000)
 </script>
