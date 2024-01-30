@@ -13,6 +13,21 @@
     @keyframes idle {
         100% {}
     }
+
+
+    .earth {
+        width: 200px;
+        height: 200px;
+        background: url(https://web.archive.org/web/20150807125159if_/http://www.noirextreme.com/digital/Earth-Color4096.jpg);
+        border-radius: 50%;
+        background-size: 400px;
+        box-shadow: inset 8px 36px 80px 36px rgb(0, 0, 0, 0.3), inset -6px 0 12px 4px rgba(255, 255, 255, 0.3);
+        animation-duration: 86400s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        background-repeat: repeat-x;
+
+    }
 </style>
 <script>
     e = [
@@ -510,6 +525,40 @@
         clock4div.style.flexDirection = "column"
         clocksdiv.appendChild(clock4div)
 
+        const clock5div = document.createElement("div")
+        const clock5 = document.createElement("div")
+        clock5.id = name + 'clock5'
+        clock5.classList = ['earth']
+        clock5line = document.createElement('div')
+        clock5line.style.width = 2
+        clock5line.style.height = 200
+        clock5line.style.background = '#f00'
+        clock5.appendChild(clock5line)
+        clock5.style.display = 'flex'
+        clock5.style.alignItems = 'center'
+        
+        clock5.style.flexDirection = "column"
+        const clock5p = document.createElement("p")
+        clock5p.innerHTML = "12AM here"
+        clock5div.appendChild(clock5)
+        clock5div.appendChild(clock5p)
+        clock5div.style.display = 'flex'
+        clock5div.style.alignItems = 'center'
+        clock5div.style.flexDirection = "column"
+        clocksdiv.appendChild(clock5div)
+        seconds = Math.floor(Date.now() / 1000) % 86400
+        pxbehindutc = 100
+        pxpersecond = 400 / 86400
+        pxtomove = Math.round((seconds) * pxpersecond) - pxbehindutc
+        clock5.style.backgroundPositionX = `${pxtomove}px`
+        clock5.animate({
+            backgroundPositionX: [`${pxtomove}px`, '0', `${pxtomove - 400}px`],
+            offset: [0, pxtomove / 400], // Shorthand for [ 0, 0.8, 1 ]
+        }, {
+            duration: 86400000,
+
+            iterations: Infinity
+        })
         div.appendChild(clocksdiv)
         document.getElementById("main").appendChild(div)
     }
@@ -542,4 +591,5 @@
         });
 
     }, 1000)
+
 </script>
