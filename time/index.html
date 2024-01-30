@@ -23,7 +23,6 @@
         ["Toronto", "to", "America/Toronto"]
     ]
     function drawOnClock1(canvas, dayseconds) {
-
         canvas.width = 200
         canvas.height = 200
         radius = canvas.width * 0.4
@@ -168,8 +167,9 @@
         document.getElementById(canvas.id).style.animation = "";
         document.getElementById(canvas.id).style.animationFillMode = "";
         canvas.width = 75
-        canvas.height = 200
+        canvas.height = 192
         ctx = canvas.getContext('2d')
+        ctx.translate(0, -4)
         hourseconds = dayseconds % 3600
         minseconds = dayseconds % 60
         if (dayseconds == 3600 * 24 - 1) {
@@ -247,8 +247,9 @@
         document.getElementById(canvas.id).style.animation = "";
         document.getElementById(canvas.id).style.animationFillMode = "";
         canvas.width = 75
-        canvas.height = 200
+        canvas.height = 192
         ctx = canvas.getContext('2d')
+        ctx.translate(0, -4)
         hourseconds = dayseconds % 3600
         minseconds = dayseconds % 60
         if (hourseconds == 3599) {
@@ -327,8 +328,9 @@
         document.getElementById(canvas.id).style.animation = "";
         document.getElementById(canvas.id).style.animationFillMode = "";
         canvas.width = 75
-        canvas.height = 200
+        canvas.height = 192
         ctx = canvas.getContext('2d')
+        ctx.translate(0, -4)
         hourseconds = dayseconds % 3600
         minseconds = dayseconds % 60
         ctx.translate(-12.5, 0)
@@ -402,46 +404,128 @@
         ctx.stroke()
         ctx.closePath()
     }
-    function makeFields(name, zone) {
+    function makeFields(name) {
         const div = document.createElement("div");
         div.id = name + 'Main'
         const para = document.createElement('p')
         para.id = name + 'Text'
         div.appendChild(para);
+        const para2 = document.createElement('p')
+        para2.id = name + 'Text2'
+        div.appendChild(para2);
+        const para3 = document.createElement('p')
+        para3.id = name + 'Text3'
+        div.appendChild(para3);
         clocksdiv = document.createElement("div")
         clocksdiv.id = name + 'clocks'
         clocksdiv.style.display = "flex"
+        const clock1div = document.createElement("div")
         const clock1 = document.createElement("canvas")
         clock1.id = name + 'clock1'
-        clocksdiv.appendChild(clock1)
+        const clock1p = document.createElement("p")
+        clock1p.innerHTML = "Clock Clock"
+        clock1div.appendChild(clock1)
+        clock1div.appendChild(clock1p)
+        clock1div.style.display = 'flex'
+        clock1div.style.alignItems = 'center'
+        clock1div.style.flexDirection = "column"
+        clocksdiv.appendChild(clock1div)
+
+
+        const clock2div = document.createElement("div")
         const clock2 = document.createElement("canvas")
         clock2.id = name + 'clock2'
-        clocksdiv.appendChild(clock2)
+        const clock2p = document.createElement("p")
+        clock2p.innerHTML = "Binary Clock"
+        clock2div.appendChild(clock2)
+        clock2div.appendChild(clock2p)
+        clock2div.style.display = 'flex'
+        clock2div.style.alignItems = 'center'
+        clock2div.style.flexDirection = "column"
+        clocksdiv.appendChild(clock2div)
+
+        clock3div = document.createElement("div")
+        clock3div.style.display = 'flex'
+        clock3div.style.alignItems = 'center'
+        clock3div.style.flexDirection = "column"
         const clock3 = document.createElement("div")
         clock3.id = name + 'clock3'
-        clocksdiv.appendChild(clock3)
+        clocksdiv.appendChild(clock3div)
+        clock3.style.display = 'flex'
+        clock3.style.flexDirection = "row"
+        clock3div.appendChild(clock3)
+
+        const clock3_1div = document.createElement('div')
+        clock3_1div.style.display = 'flex'
+        clock3_1div.style.alignItems = 'center'
+        clock3_1div.style.flexDirection = "column"
+        const clock3_1p = document.createElement("p")
+        clock3_1p.innerHTML = "Hours"
+        clock3_1p.style.margin = 0
         const clock3_1 = document.createElement("canvas")
         clock3_1.id = name + 'clock3_1'
-        clock3.appendChild(clock3_1)
+        clock3_1div.appendChild(clock3_1)
+        clock3_1div.appendChild(clock3_1p)
+        clock3.appendChild(clock3_1div)
+
+        const clock3_2div = document.createElement('div')
+        clock3_2div.style.display = 'flex'
+        clock3_2div.style.alignItems = 'center'
+        clock3_2div.style.flexDirection = "column"
+        const clock3_2p = document.createElement("p")
+        clock3_2p.innerHTML = "Minutes"
+        clock3_2p.style.margin = 0
         const clock3_2 = document.createElement("canvas")
         clock3_2.id = name + 'clock3_2'
-        clock3.appendChild(clock3_2)
+        clock3_2div.appendChild(clock3_2)
+        clock3_2div.appendChild(clock3_2p)
+        clock3.appendChild(clock3_2div)
+
+        const clock3_3div = document.createElement('div')
+        clock3_3div.style.display = 'flex'
+        clock3_3div.style.alignItems = 'center'
+        clock3_3div.style.flexDirection = "column"
+        const clock3_3p = document.createElement("p")
+        clock3_3p.innerHTML = "Seconds"
+        clock3_3p.style.margin = 0
         const clock3_3 = document.createElement("canvas")
         clock3_3.id = name + 'clock3_3'
-        clock3.appendChild(clock3_3)
-        clocksdiv.appendChild(clock3)
-        div.appendChild(clocksdiv);
+        clock3_3div.appendChild(clock3_3)
+        clock3_3div.appendChild(clock3_3p)
+        clock3.appendChild(clock3_3div)
+        clock3p = document.createElement('p')
+        clock3p.innerHTML = "Sand clock"
+        clock3p.style.marginTop = 6
+        clock3div.appendChild(clock3p)
+
+        const clock4div = document.createElement("div")
+        const clock4 = document.createElement("canvas")
+        clock4.id = name + 'clock4'
+        const clock4p = document.createElement("p")
+        clock4p.innerHTML = "呂し工卞亡廾ヨ句 Clock"
+        clock4div.appendChild(clock4)
+        clock4div.appendChild(clock4p)
+        clock4div.style.display = 'flex'
+        clock4div.style.alignItems = 'center'
+        clock4div.style.flexDirection = "column"
+        clocksdiv.appendChild(clock4div)
+
+        div.appendChild(clocksdiv)
         document.getElementById("main").appendChild(div)
     }
     e.forEach(i => {
-        makeFields(i[1], i[2])
+        makeFields(i[1])
     });
     setInterval(() => {
         e.forEach(i => {
             time = moment().tz(i[2])
             const seconds = time.hours() * 3600 + time.minutes() * 60 + time.seconds()
             para = document.getElementById(i[1] + "Text")
-            para.innerHTML = `${i[0]}: ${time.format('LTS')}<br />`
+            para.innerHTML = `${i[0]}:<br />Time - ${time.format('LTS')}<br />`
+            para2 = document.getElementById(i[1] + "Text2")
+            para2.innerHTML = `Unix Epoch - ${time.unix()}<br />`
+            para3 = document.getElementById(i[1] + "Text3")
+            para3.innerHTML = `Armaan Raisinghani Epoch - ${time.unix() - 1171521000}<br />`
             clock1 = document.getElementById(i[1] + "clock1")
             drawOnClock1(clock1, seconds)
             clock2 = document.getElementById(i[1] + "clock2")
@@ -452,6 +536,9 @@
             drawOnClock3_2(clock3_2, seconds)
             clock3_3 = document.getElementById(i[1] + "clock3_3")
             drawOnClock3_3(clock3_3, seconds)
+            clock4 = document.getElementById(i[1] + "clock4")
+            drawOnClock1(clock4, Math.round(Math.random() * 86400))
+
         });
 
     }, 1000)
