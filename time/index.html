@@ -536,7 +536,7 @@
         clock5.appendChild(clock5line)
         clock5.style.display = 'flex'
         clock5.style.alignItems = 'center'
-        
+
         clock5.style.flexDirection = "column"
         const clock5p = document.createElement("p")
         clock5p.innerHTML = "12AM here"
@@ -553,10 +553,9 @@
         clock5.style.backgroundPositionX = `${pxtomove}px`
         clock5.animate({
             backgroundPositionX: [`${pxtomove}px`, '0', `${pxtomove - 400}px`],
-            offset: [0, pxtomove / 400], // Shorthand for [ 0, 0.8, 1 ]
+            offset: [0, Math.abs(pxtomove) / 400], // Shorthand for [ 0, 0.8, 1 ]
         }, {
             duration: 86400000,
-
             iterations: Infinity
         })
         div.appendChild(clocksdiv)
